@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Transaction {
+public class TransactionRecord {
 
     @Id
     @GeneratedValue()
@@ -25,10 +25,10 @@ public class Transaction {
     @JoinColumn(name = "recipient_id", nullable = false)
     private UserRecord recipient;
 
-    public Transaction() {
+    public TransactionRecord() {
     }
 
-    public Transaction(float amount, UserRecord sender, UserRecord recipient) {
+    public TransactionRecord(float amount, UserRecord sender, UserRecord recipient) {
         this.amount = amount;
         this.sender = sender;
         this.recipient = recipient;
