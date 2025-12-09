@@ -7,7 +7,7 @@ import com.jpmc.midascore.service.balance.BalanceService;
 import org.springframework.stereotype.Service;
 
 @Service
-class BalanceServiceImpl implements BalanceService {
+public class BalanceServiceImpl implements BalanceService {
 
     private final DatabaseConduit databaseConduit;
 
