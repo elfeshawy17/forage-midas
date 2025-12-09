@@ -2,11 +2,10 @@ package com.jpmc.midascore.component;
 
 import com.jpmc.midascore.entity.TransactionRecord;
 import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.exception.UserNotFoundException;
 import com.jpmc.midascore.repository.TransactionRepository;
 import com.jpmc.midascore.repository.UserRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class DatabaseConduit {
@@ -22,8 +21,9 @@ public class DatabaseConduit {
         userRepository.save(userRecord);
     }
 
-    public Optional<UserRecord> findUserById(Long id) {
-        return userRepository.findById(id);
+    public UserRecord lockUser(Long id) {
+        return userRepository.findByIdForUpdate(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
     }
 
     public void saveTransaction(TransactionRecord transactionRecord) {
