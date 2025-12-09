@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BalanceController {
     private final BalanceService balanceService;
 
-    BalanceController(BalanceService balanceService) {
+    public BalanceController(BalanceService balanceService) {
         this.balanceService = balanceService;
     }
 

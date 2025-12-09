@@ -17,7 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final DatabaseConduit databaseConduit;
 
-    TransactionServiceImpl(DatabaseConduit databaseConduit) {
+    public TransactionServiceImpl(DatabaseConduit databaseConduit) {
         this.databaseConduit = databaseConduit;
     }
 

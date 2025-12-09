@@ -11,7 +11,7 @@ public class BalanceServiceImpl implements BalanceService {
 
     private final DatabaseConduit databaseConduit;
 
-    BalanceServiceImpl(DatabaseConduit databaseConduit) {
+    public BalanceServiceImpl(DatabaseConduit databaseConduit) {
         this.databaseConduit = databaseConduit;
     }
 
