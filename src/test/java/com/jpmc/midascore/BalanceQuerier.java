@@ -2,7 +2,9 @@ package com.jpmc.midascore;
 
 import com.jpmc.midascore.foundation.Balance;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -10,7 +12,14 @@ public class BalanceQuerier {
     private final RestTemplate restTemplate;
 
     public BalanceQuerier(RestTemplateBuilder builder) {
-        this.restTemplate = builder.build();
+        this.restTemplate = builder
+                .errorHandler(new DefaultResponseErrorHandler() {
+                    @Override
+                    public void handleError(ClientHttpResponse response) {
+                        // DO NOTHING → don't throw exception
+                    }
+                })
+                .build();
     }
 
     public Balance query(Long userId) {
