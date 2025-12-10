@@ -8,6 +8,7 @@ import com.jpmc.midascore.entity.UserRecord;
 import com.jpmc.midascore.exception.InsufficientBalanceException;
 import com.jpmc.midascore.exception.InvalidTransactionException;
 import com.jpmc.midascore.foundation.Transaction;
+import com.jpmc.midascore.service.incentive.IncentiveClient;
 import com.jpmc.midascore.service.transaction.TransactionService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,11 @@ import org.springframework.stereotype.Service;
 public class TransactionServiceImpl implements TransactionService {
 
     private final DatabaseConduit databaseConduit;
+    private final IncentiveClient incentiveClientl;
 
-    public TransactionServiceImpl(DatabaseConduit databaseConduit) {
+    public TransactionServiceImpl(DatabaseConduit databaseConduit, IncentiveClient incentiveClientl) {
         this.databaseConduit = databaseConduit;
+        this.incentiveClientl = incentiveClientl;
     }
 
     @Transactional
