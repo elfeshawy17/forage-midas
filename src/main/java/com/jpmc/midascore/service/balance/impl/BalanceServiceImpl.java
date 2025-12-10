@@ -18,6 +18,8 @@ public class BalanceServiceImpl implements BalanceService {
     @Override
     public Balance queryBalance(Long userId) {
         UserRecord user = databaseConduit.findUserById(userId);
-        return new Balance(user.getBalance());
+
+        if (user != null) return new Balance(user.getBalance());
+        else return new Balance(0);
     }
 }

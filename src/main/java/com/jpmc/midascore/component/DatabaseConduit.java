@@ -22,8 +22,7 @@ public class DatabaseConduit {
     }
 
     public UserRecord findUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
+        return userRepository.findById(id).orElse(null);
     }
 
     public UserRecord lockUser(Long id) {
