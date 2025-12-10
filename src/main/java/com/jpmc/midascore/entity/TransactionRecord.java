@@ -15,6 +15,9 @@ public class TransactionRecord {
     private float amount;
 
     @Column(nullable = false)
+    private float incentive;
+
+    @Column(nullable = false)
     private LocalDateTime timestamp;
 
     @ManyToOne(fetch = FetchType.LAZY)
