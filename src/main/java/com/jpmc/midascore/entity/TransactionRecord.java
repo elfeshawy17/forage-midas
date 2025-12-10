@@ -31,8 +31,9 @@ public class TransactionRecord {
     public TransactionRecord() {
     }
 
-    public TransactionRecord(float amount, UserRecord sender, UserRecord recipient) {
+    public TransactionRecord(float amount, float incentive, UserRecord sender, UserRecord recipient) {
         this.amount = amount;
+        this.incentive = incentive;
         this.sender = sender;
         this.recipient = recipient;
         this.timestamp = LocalDateTime.now();
@@ -44,6 +45,14 @@ public class TransactionRecord {
 
     public float getAmount() {
         return amount;
+    }
+
+    public float getIncentive() {
+        return incentive;
+    }
+
+    public void setIncentive(float incentive) {
+        this.incentive = incentive;
     }
 
     public LocalDateTime getTimestamp() {
